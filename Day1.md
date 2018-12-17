@@ -100,6 +100,27 @@ menu = ["한식", "중식", "일식", "양식", "분식"]
 menu[0]
 #=> 한식
 ```
+`list`는 정렬을 할 수 있다.
+
+```python
+a = [3, 1, 2]
+#1. sorted
+sorted(a)
+#=> [1,2,3] 리턴
+print(a)
+#[3,1,2]
+a = sorted(a)
+print(a)
+#[1,2,3]
+
+#2. sort()
+a.sort()
+#=> None 리턴
+print(a)
+#[1,2,3]
+```
+
+
 
 ### 4) Dictionary
 
