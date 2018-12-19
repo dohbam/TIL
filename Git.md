@@ -69,3 +69,4 @@ $ git remote add origin https://github.com/dohbam/TIL.git
 $ git push -u origin master
 ```
 
+* u: upstream. 최초에만 쓰고 이후로는 안 써도 됨. 
