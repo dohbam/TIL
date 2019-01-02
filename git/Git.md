@@ -87,3 +87,12 @@ $ git pull origin master
 $ git clone https://github.com/blahblah
 ```
 
+# gitignore
+
+* `gitignore`로 무시해야 하는 것들 [자료](www.gitignore.io)
+* 그 외에도 개인정보(DB) 등 올리지 말아야 할 파일들을 관리할 때 쓴다.
+* no extension 타입 파일 '.gitignore'를 만들어 무시할 폴더, 파일 등을 추가한다.
+* *.png 이런 식으로도 사용 가능하다.
+
+
+
