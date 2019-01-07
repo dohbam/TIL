@@ -96,3 +96,4 @@ $ git clone https://github.com/blahblah
 
 
 
+* git stash: 임시 공간에 잠시 두는 것(?)
