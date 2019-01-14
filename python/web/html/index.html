@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>HTML 연습</title>
+        <style>
+            body {
+                height: 10000px;
+            }
+            table, tr, td {
+                border: 1px solid darkcyan;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#a">링크로 가기</a>
+        <!--여기는 주석입니다.-->
+        <h1 id="heading">Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h6>Heading 6</h6>
+        <p><b>Lorem ipsum</b> dolor sit amet consectetur adipisicing elit. Obcaecati ut possimus aliquid illum officia incidunt beatae quod tempora nobis amet at, atque maiores laborum molestiae aut alias quam itaque aspernatur?</p>
+        <br>
+        <hr>
+        <br>
+        <p>위에 작성한 것은 <strong>Lorem Ipsum</strong>으로 임의의 문자열을 나타냅니다.</p>
+        <strong>strong태그와 b태그는 모두 bold체를 표현한다. strong태그가 시맨틱.</strong><br>
+        <em>이탤릭체도 작성 가능합니다.</em>
+        <i>i로도 작성 가능합니다. 다만, em이 시맨틱한 의미를 가지고 있습니다.</i>
+        <p><del>취소선을 나타냅니다.</del></p>
+        <p><mark>하이라이팅도 가능합니다.</mark></p>
+        <p>log<sub>2</sub>10</p>
+        <p>2<sup>3</sup></p>
+        <p>아&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아</p>
+        <pre>
+            import random
+            random.sample(range(1, 46), 6)
+            띄    어   쓰  기
+        </pre>
+        <q id="q">안녕하세요. 인용문입니다. 짧을 때 사용해요.</q>
+        <blockquote>인용문이지만, 긴 문장입니다.
+            아마도 들여쓰기가 기본적으로 적용될 겁니다.
+        </blockquote>
+        <ul>
+            <li>순서가 없습니다.</li>
+            <li style="list-style-type: square">도경수</li>
+            <li>변백현</li>
+        </ul>
+        <!-- reversed, start="" -->
+        <ol type="a" start="5">
+            <li>1교시!</li>
+            <li>2교시!</li>
+            <li>3교시!</li>
+            <li value="10">4교시!</li>
+            <li>5교시!</li>
+            <li>6교시!</li>
+        </ol>
+        <!--emmet-->
+        <ul>
+            <li>사과</li>
+            <li>딸기</li>
+            <li>포도</li>
+        </ul>
+        <br>
+        <h1>프로그래밍 교육</h1>
+        <a href="#python">파이썬</a>
+        <a href="#web">웹</a>
+        <a href="practice.html" target="_blank">연습</a>
+        <hr>
+        <h2 id="python"><a href="https://docs.python.org/ko/3/tutorial/index.html" target="_blank">파이썬</a></h2>
+        <h3>Number type</h3>
+        <p>파이썬에서 숫자형은 아래와 같이 있다.</p>
+        <ol>
+            <li>init</li>
+            <li>float</li>
+            <li>complex</li>
+            <li><del>str</del></li>
+        </ol>
+        <h3>Sequence</h3>
+        <p>파이썬에서 시퀀스는 아래와 같이 있다.</p>
+        <p><strong>시퀀스는 for문을 돌릴 수 있다!!</strong></p>
+        <ol>
+            <li>str</li>
+            <li>list</li>
+            <li>tuple</li>
+            <li>range</li>
+        </ol>
+        <hr>
+        <h2 id="web"><a href="https://developer.mozilla.org/ko/" target="_blank">웹</a></h2>
+        <h3>기초</h3>
+        <ul>
+            <li style="list-style-type: none">HTML</li>
+            <li style="list-style-type: circle">CSS</li>
+            <li style="list-style-type: lower-alpha">CSS</li>
+        </ul>
+        <a href="https://google.com" target="_blank">새창으로 구글로 가기</a>
+        <a href="https://google.com" target="_self">여기에서 구글로 가기(디폴트)</a>
+        <a href="#heading">상단으로 가기</a>
+        <a id = "a" href="#q">인용문으로 가기</a>
+        <a href="hello.html" target="_blank">hello, world!</a>
+        <a href="templates/test.html" target="_blank">test</a>
+        <a href="mailto:t@t.t">메일 보내기</a>
+        <table>
+            <tr>
+                <th colspan="2">표 실습</th>
+                <!-- <th>숫자</th> -->
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td colspan="2">1</td>
+            </tr>
+            <tr>
+                <td rowspan="2">2</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>2</td>
+            </tr>
+        </table>
+        <hr>
+        <h2>Form input</h2>
+        <form action="#">
+            일반 텍스트: <input name="username" type="text" value="도경수" placeholder="이름을 입력해주세요." autofocus><br>
+            이메일: <input type="email" placeholder="이메일주소를 입력해주세요." autocomplete="email"><br>
+            비밀번호: <input type="password" placeholder="비밀번호를 입력해주세요."><br>
+            날짜: <input type="date" value="1992-01-12">
+            <input type="hidden" name="hidden" value="바보야">
+            <input type="submit" value="send"><br>
+            <!-- radio button -->
+            <input type="radio" name="gender" value="male" checked> 남자
+            <input type="radio" name="gender" value="female"> 여자 <br>
+            <!-- checkbox -->
+            <input type="checkbox" name="option" value="1">EXO<br>
+            <input type="checkbox" name="option" value="2">EXO-CBX<br>
+            <input type="checkbox" name="option" value="3">EXO-L<br>
+            <!-- input 태그는 닫는 태그가 없으므로 value에 값을 저장해야 쓸 수 있음. -->
+            <!-- dropdown -->
+            <select name="country">
+                <option value="korea">한국</option>
+                <option value="china" selected>중국</option>
+                <option value="japan" disabled>일본</option>
+                <!-- 1차적으로 html에서 disabled 해도 수정해서 값을 넘길 수 있으므로 서버에서도 2차적인 validation이 있어야. -->
+            </select>
+            <!-- submit 버튼 누르면 url에서 값 넘어가는 거 볼 수 있음 -->
+            <input name="number" type="range" min="0" max="100" step="10">
+        </form>
+        <hr>
+        <form action="https://google.com/search" target="_blank">
+            <!-- target a tag에서만 쓴다고 하는데 되는 것 같은데...? -->
+            검색어: <input name="q"><br>
+            <input type="submit" value="구글검색">
+
+
+        </form>
+        <hr>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/pSudEWBAYRE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/227797644&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        <a href="http://www.ssafy.com/"><input type="button"></a><br>
+        ID: <input name="ID" type="text" placeholder="user"><br>
+        PWD: <input name="password" type="password" placeholder="****">
+        <input type="submit" value="로그인">
+    </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>table 연습</title>
+    <style>
+        table, tr, td {
+            border: 1px solid darkslateblue; 
+            /* text-align: center; */
+            color:maroon
+        }
+        p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="4" align="middle">점심메뉴</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th scope="col">월</th>
+            <th scope="col">화</th>
+            <th scope="col">수</th>
+        </tr>
+        <tr>
+            <!-- scope 보이지는 않지만 예를들어 청각장애인용 읽기 프로그램 등에서 구분이 가능하게 된다. -->
+            <td scope="row">특식</td> 
+            <td>초밥</td>
+            <td>바베큐</td>
+            <td>삼겹살</td>
+        </tr>
+        <tr>
+            <td scope="row">한식</td>
+            <td>육개장</td>
+            <td>미역국</td>
+            <td>삼계탕</td>
+        </tr>
+    </table>
+    <h1>2019 타임테이블</h1>
+    <table>
+        <tr>
+            <th>TIME</th>
+            <th>INDOOR</th>
+            <th colspan="2">OUTDOOR</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td>소극장</td>
+            <td>잔디마당</td>
+            <td>대공연장</td>
+        </tr>
+        <tr>
+            <td>10:00</td>
+            <td rowspan="2">안녕하신가영</td>
+            <td></td>
+            <td>10cm</td>
+        </tr>
+        <tr>
+            <td>13:00</td>
+            <td rowspan="2">선우정아</td>
+            <td rowspan="2">참깨와 솜사탕</td>
+        </tr>
+        <tr>
+            <td>15:00</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>17:00</td>
+            <td>크러쉬</td>
+            <td></td>
+            <td>폴킴</td>
+        </tr>
+    </table>
+    <form>
+        <h1>FORM</h1>
+        <p>주문서를 작성하여 주십시오.</p>
+        지점명: <input type="text" value="덕명점" readonly><br>
+        이름: <input name="username" type="text" placeholder="이름을 입력해주세요." required autofocus><br>
+        날짜: <input name="date" type="date" value="2019-01-14">
+        <!-- 오늘 날짜를 자동으로 넣으려면 javascript -->
+        <h2>1. 샌드위치 선택</h2>
+        <input type="radio" name="sandwich" value="egg">에그 마요<br>
+        <input type="radio" name="sandwich" value="BMT">이탈리안 비엠티<br>
+        <input type="radio" name="sandwich" value="avocado">터키 베이컨 아보카도<br>
+        <hr>
+        <h2>2. 사이즈 선택</h2>
+        <input name="size" type="number" min="15" max="30" step="15" value="15" required>
+        <hr>
+        <h2>3. 빵</h2>
+        <select name="bread">
+            <option value="honey">허니오트</option>
+            <option value="flat" disabled>플랫브래드</option>
+            <option value="hotty">하티 이탈리안</option>
+        </select>
+        <hr>
+        <h2>4. 야채/소스</h2>
+        <!-- input:checkbox*5 로 입력 가능 -->
+        <input type="checkbox" name="option" value="tomato">토마토<br>
+        <input type="checkbox" name="option" value="cucumber">오이<br>
+        <input type="checkbox" name="option" value="halla">할라피뇨<br>
+        <input type="checkbox" name="option" value="chili">핫 칠리<br>
+        <input type="checkbox" name="option" value="barbecue">바베큐<br>
+        <br>
+        <input type="submit" value="subit">
+    </form>
+</body>
+</html>
