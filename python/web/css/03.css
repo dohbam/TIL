@@ -1,0 +1,61 @@
+/* 그룹 선택자 */
+p, h1, h2, h3 {
+    color:grey;
+}
+.black_bg, .white {
+    color: white;
+    background-color: #000000;
+}
+div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+.red {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+.blue {
+    background-color: rgb(0, 0, 255);
+}
+/* 인접 선택자 (형제관계) */
+/* 지정한 순서대로일 때만 적용 */
+.red + .blue + div {
+    background-color: purple;
+}
+/* h1 밑에 있는 형제 */
+h1 ~ p {
+    color: green;
+} 
+/* h1에 바로 붙어있는 형제 */
+h1 + p {
+    color: rgb(11, 187, 128);
+}
+/* 부모자식관계 */
+/* 모든 자식은 가능, 손자는 불가능 */
+ol > li {
+    color: palevioletred;
+}
+/* 조합 가능 */
+/* 예: div.blue.white.pink
+<div class="blue white pink"> */
+ol#chocolate > li:nth-child(2) {
+    color: chocolate;
+}
+/* 자손 모두 */
+ul li {
+    color: lime;
+}
+/* 부모 안의 자식 아래 자식 */
+ul li+li {
+    color: violet;
+}
+ul li~li {
+    color: sandybrown;
+}
+/* 특정 자식, 형제 */
+ul li:nth-of-type(2) {
+    color: silver;
+}
+/* 형제:nth-of-type(2): */
+/* 형제:nth-child(2): */
+/* 차이점:  */

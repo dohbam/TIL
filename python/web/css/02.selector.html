@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="02.css">
+</head>
+<body>
+    <p>빨간색</p>
+    <h1>Tag 선택자(요소 선택자)</h1>
+    <h2 class="pink">클래스 선택자</h2>
+    <h3 id="yellow">아이디 선택자</h3>
+    <h3 class="pink" id="yellow">id > class</h3>
+    <!-- 범위가 좁아질수록 우선순위. id는 문서에서 유일하므로 짱쎔. -->
+    <!-- 전체 > 태그 > 클래스 > 아이디 -->
+    <h2 class="pink">class > tag</h2>
+    <p><span class="pink">핑크색</span>, <span id="yellow">노란색</span></p>
+    <!-- span tag: 의미없음. 마크업 적용 위한 구분에 쓰임. 그룹일 경우 div 사용.-->
+    <!-- css를 적용하기 위해서는 마크업을 하고 선택자를 부여한다.
+    span, div태그는 의미는 없지만, css 적용을 위해서 활용한다. -->
+    <p class="bold pink">볼드체</p>
+    <!-- 띄어쓰기로 여러개의 클래스 모두 적용 가능 -->
+    <p class="bold blue pink">파란색. 코드상 마지막 순서라서. 덮어씌워짐.</p>
+    <!-- !important로 우선순위를 올릴 수 있지만 너무 막강이라서 가능하면 다른 방법을 찾을 것. -->
+    <p><strong>볼드체</strong></p>
+    <!-- strong: 시맨틱. 중요한 키워드라는 의미 부여. -->
+    <!-- 그냥 볼드체만 적용할 경우 의미를 지닌 strong 대신 css나 b태그 이용. -->
+    <p><b>볼드체</b></p>
+</body>
+</html>
