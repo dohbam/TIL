@@ -101,3 +101,13 @@ pip install requests
 pip install bs4
 ```
 
+#### review
+
+* `flask`
+  * 요청과 응답
+  * variable routing
+    * request.args = {'name': 'doh', 'msg': 'hello~'} 이런 식으로 넘김
+    * request.args.get('name') = 'doh'
+    * get은 키 값이 없어도 오류가 발생하지 않고 None이 return됨.
+    * a.get('name', 'kim') 이런 식으로 없을 경우 반환할 값도 넣을 수 있다. python 문법.
+      * routing - template - 넘어가는 그 흐름을 익혀둘 것.
