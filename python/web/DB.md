@@ -196,3 +196,10 @@ sqlite> SELECT * FROM users ORDER BY age, last_name LIMIT 10;
 sqlite> SELECT first_name FROM users ORDER BY balance DESC LIMIT 10;     
 ```
 
+* DISTINCT
+
+```sql
+-- 프로젝트
+SELECT DISTINCT 장르 FROM movies;
+```
+
