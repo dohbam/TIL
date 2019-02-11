@@ -52,3 +52,17 @@ $ git diff HEAD HEAD~1
 - txt 파일 직접 고치는 방법: vi **.txt -> i -> 수정 -> :wq
 - git add . + git commit -m " " == git commit -am " "
 
+
+
+* git commit message 수정
+
+```bash
+$ git commit --amend
+```
+
+* git commit message 확인
+
+```bash
+$ git log -1
+```
+
