@@ -49,7 +49,7 @@
 | WEB                  | 웹 프로그래밍                        | <https://www.edwith.org/boostcourse-web>                     |
 |                      |                                      |                                                              |
 
-* Django
+* Django [링크](<https://docs.google.com/spreadsheets/d/1PB_sybWRdsobcL4guoRXN0FQVb-_E71JwvrGtHXbTDw/edit#gid=138945251>)
 
 |               |            |                                                              |
 | ------------- | ---------- | ------------------------------------------------------------ |
