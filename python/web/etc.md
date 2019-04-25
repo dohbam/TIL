@@ -24,3 +24,14 @@
   * return HttpResponseForbidden("Error Mesage")
   * 401과의 차이점: 로그인 여부
 
+### User
+
+* get_user_model()
+  * settings.py 의 AUTH_USER_MODEL을 보고 user class 를 가져옴.
+  * default : auth.User
+* django는 admin 기능이 있어서 기본 user 모델이 있음.
+  * 커스텀은 이걸 상속받아 쓰는데 이 때, AUTH_USER_MODEL 경로를 바꿔주면
+  * get_user_model()로 가져온 코드도 유효하게 유지할 수 있지.
+* 그런데 UserCreationForm은 get_user_model()이 아닌 User를 직접 import 하여 사용하기에
+  * User를 커스텀하면 UserCreationForm도 커스텀해서 사용해야 하는 것.
+* models.py 에서는 settings.AUTH_USER_MODEL을, 그 외 views.py, forms.py 등에서는 get_user_model()을 사용.
