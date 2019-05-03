@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <button v-on:click="plus">Count +</button>
+        {{ message }} - {{ count }}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue ({
+            // el: 실제 Vue와 연결할 element
+            el: '#app',
+            // data: app(vue instance)의 속성
+            data: {
+                message: 'Hello, Vue!',
+                count: 0
+            },
+            // methods : app의 methods. arrow fuction은 method 정의에서 사용할 수 없다.
+            // this가 동작하는 방식이 다르기 때문.
+            methods: {
+                plus: function() {
+                    this.count ++
+                }
+            } 
+        })
+    </script>
+    
+</body>
+</html>
