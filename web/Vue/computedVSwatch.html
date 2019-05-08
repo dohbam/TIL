@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-____ 디렉티브(Directive) 
+        vue의 element에 지시를 하는 문법 
+        값에 해당하는 부분(='____') 자바스크립트 문법을 사용할 수 있다.-->
+    <div id='app'>
+        <!-- 보관법 -->
+        {{message}} - {{count}}
+        <br>
+
+        <!-- v-on : 이벤트 리스너를 등록하는 것 / 축약형은 아래와 같다.
+            축약형 : @____ -->
+        <button v-on:click='plus'>count증가</button> 
+        <button @click='plus'>축약count증가</button> 
+        <br>
+        <!-- v-text 는 그대로 출력함 -->
+        <span v-text='htmlMessage'></span>
+
+        <!-- v-html 은 해당하는 값에 태그가 있으면 html로 출력함 -->
+        <span v-html='htmlMessage'></span>
+
+        <!-- v-once 는 랜더링 되었을 때의 값 하나가 계속 유지됨. -->
+        <h1 v-once v-text='count'></h1> 
+
+        <!-- v-if 는 html(여기에서는 span) 태그를 보여줄지 말지를 결정. -->
+        <span v-if='count>10'>10보다 큼</span>
+
+        <span v-else-if='count>3'>10보다 작고 3보단 큼</span>
+        <span v-else-if='count==2'>딱2</span>
+
+        <span v-else>5보다 작거나 같음.</span>
+        <br>
+        
+        <!-- 처음에는 안보이지만, console 에 app.isTrue = true 하면 뜬다. -->
+        <h1 v-show="isTrue">123</h1>
+
+        <li v-for='hero in myArray'>
+            {{hero}}
+        </li>
+
+        <!-- v-bing html 속성의 값을 data에 있는 값으로 설정하고 싶을 때 , 생략이 가능 -->
+        <a v-bind:href='urlLink'>구글</a>
+        <a :href='urlLink'>구글</a>
+
+        <input v-model='asdf'> <br>
+        {{asdf}} <br>
+        {{asdf + '123123123'}} <br>
+        {{asdf.split('').reverse().join('')}}<br> <!-- 가능하긴 하다만, html 부분에서 연산은 지양. -->
+        {{reverseWord}}<br>
+        {{reverseWord}}
+        {{rev()}}
+        {{rev()}}
+        {{reverseWord}}
+        {{rev()}}
+        <select v-model='lunch'>
+            <option value='특식'>특식</option>
+            <option value='한식'>한식</option>
+            <option value='가운데'>가운데</option>
+        </select>    
+        <h1>{{lunch}}</h1>
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue ({
+            
+            // element : 실제 Vue 와 연결할 element
+            el : '#app',
+            // app (vue 인스턴스)의 속성을 가지게 된다.
+            data : {
+                asdf : '', // 비어있는 스트링으로 처리해야 v-model 에서 가져올 수 있다??
+                lunch:'뭐먹지',
+                message : 'Hello, Vue!',
+                htmlMessage : '<p>안녕</p>',
+                count : 0,
+                isTrue: false,
+                myArray: [
+                    '캡아','헐크','토르'
+                ],
+                urlLink : 'https:google.com',
+                
+            },
+            methods: {
+                plus : function() {
+                    this.count ++
+                    // console.log(this)
+                },
+                today : function() { // 이렇게 정의되면 불러올때마다 호출한다. = 값이 항상 바뀜
+                // app.today()
+                    return new Date()
+                }, 
+                rev: function() {
+                    console.log(2)
+                    return this.asdf.split('').reverse().join('')
+                }
+            },
+            // computed : 캐싱 역할. methods 와의 차이점은, computed에 해당 내용이 변할 때 바뀐다.
+            // 변할 때 마다 캐싱이 되기 때문에 나중에 다시 불러올 상황이 오면, 연산을 하는 것이 아니라
+            // 저장된 값을 그대로 가져옴으로써 일의 양? 이 줄어드는 효과를 가져온다.
+            // app.computedToday 는 어떠한 순간 값으로 계속 일정하게 나온다.
+            computed: {
+                reverseWord:function() {
+                    console.log(1) // 값이 변경되지 않는 동안에는 여러번 호출해도 1번 찍힘
+                    return this.asdf.split('').reverse().join('')
+                },
+                computedToday : function() {
+                    return new Date()
+                }
+            }
+        })
+
+
+
+    </script>
+
+</body>
+</html>

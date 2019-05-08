@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Firebase -->
+    <script src="https://gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <!-- VueFire -->
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <!-- firebaseui -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.6.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.6.0/firebaseui.css" />
+    <script>
+        const config = {
+            apiKey: "AIzaSyDrJ_o5fXXCd9ZVitD7Wgm_HUgpYuAgVjE",
+            databaseURL: "https://vue-project-ssafy.firebaseio.com/",
+            projectId: "vue-project-ssafy",
+        };
+        firebase.initializeApp(config);
+        const db = firebase.database()
+        const auth = firebase.auth()
+        const ui = new firebaseui.auth.AuthUI(auth)
+        // ui.start('#firebaseui-auth-container')
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Nanum+Pen+Script" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(218, 231, 248);
+            font-family: 'Nanum Pen Script', 'Dancing Script', cursive;
+        }
+        .chat-container {
+            width: 650px;
+            margin: auto;
+        }
+        .chat {
+            width: fit-content;
+            border: 1px solid lightsteelblue;
+            background-color: rgb(99, 170, 170);
+            color: rgb(50, 50, 50);
+            border-radius: 8px;
+            padding-left: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 5px;
+            margin: 2px;
+        }
+        .my-chat {
+            margin-left: auto;
+            background-color: rgb(128, 144, 240);
+        }
+        input {
+            width: 645px;
+            border-radius: 8px;
+            height: 25px;
+            font-family: 'Nanum Pen Script', 'Dancing Script', cursive;
+        }
+        button {
+            border-radius: 8px;
+            background-color: rgb(230, 138, 122);
+            font-family: 'Nanum Pen Script', 'Dancing Script', cursive;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="chat-container" v-if="currentUser.uid">
+            <button @click="logout">Logout</button>            
+            <div v-for="message in messages" :class="{'chat':true, 'my-chat': currentUser.username === message.username}">
+                <b>{{ message.username }}</b> : {{ message.content }}
+            </div>
+            {{ newMessage }}<br>
+            <input type="text" v-model="newMessage" v-on:keyup.enter="createMessage">
+        </div>
+        <div v-else>
+            <div id="firebaseui-auth-container"></div>
+        </div>
+
+    </div>
+
+    <script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            newMessage: '',
+            // messages: [
+            //     {'username': 'xiumin', 'content': '나비소녀'},
+            //     {'username': 'chen', 'content': '사월이 지나면 우리 헤어져요'}
+            // ],
+            currentUser: {
+                uid: '', 
+                email: '',
+                username: ''
+            }
+
+        },
+        firebase: {
+            messages: db.ref('messages')
+        },
+        // 실제 실행(마운트)과 동시에 실행되는 함수
+        mounted: function() {
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    this.currentUser.uid = user.uid
+                    this.currentUser.email = user.email
+                    this.currentUser.username = user.displayName
+                }
+                this.initUI()
+            })
+        },
+        methods: {
+            createMessage: function() {
+                if (this.newMessage) {
+                    // this.messages.push({
+                    this.$firebaseRefs.messages.push({
+                        username: this.currentUser.username,
+                        content: this.newMessage
+                    })
+                    this.newMessage = ''
+                }
+            },
+            initUI: function() {
+                ui.start('#firebaseui-auth-container', {
+                    signInoptions: [
+                        firebase.auth.EmailAuthProvider.PROVIDER_ID
+                    ],
+                    callbacks: {
+                        // 내부(function 안의 callback 함수)에서 this를 사용하기 위해 arrow function 사용
+                        signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+                            this.currentUser.uid = authResult.user.uid
+                            this.currentUser.email = authResult.user.email
+                            this.currentUser.username = authResult.user.displayName
+                            return false
+                        }
+                    }
+                })
+            },
+            logout: function() {
+                this.currentUser = {
+                    uid: '',
+                    email: '',
+                    displayName: '',
+                }
+                auth.SignOut()
+            }
+        }
+
+    })
+    
+    
+    </script>
+</body>
+</html>
