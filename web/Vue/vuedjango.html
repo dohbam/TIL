@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="music in musics"><h3>{{ music.artist_name }} : {{ music.title }}</h3>
+                <ul>
+                    <li v-for="comment in music.comment_set">{{ comment.content }}</li>
+                    <li><input type="text" v-model="music.newComment" v-on:keyup.enter="createComment(music)"></li>
+                </ul>                
+                <hr>
+            </li>            
+        </ul>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                musics: []
+            },
+            mounted: function() {
+                this.getMusics()
+            },
+            methods: {
+                getMusics: function() {
+                // axios를 통한 요청은 promise 객체를 return
+                    axios.get("http://django-intro-dohbam.c9users.io:8080/api/v1/musics/")
+                        // resolve 시 (성공하면) => then으로 처리
+                        .then(response => response.data)
+                        .then(musics => {
+                            this.musics = musics.map((music) => {
+                                return {...music, newComment: ''}
+                            })
+                        })
+                        // reject 시 (실패하면) => catch에서 처리
+                        .catch(error => {
+                            console.log(error)
+                        })
+                },
+                createComment: function(music) {
+                    const url = `http://django-intro-dohbam.c9users.io:8080/api/v1/musics/${music.id}/comments/`
+                    // music은 url의 music.id로 넘어가므로 data로 넘기지 않음.
+                    // data는 사용자가 입력한 폼에서 넘길 값만 생각하면 됨.
+                    const data = { 'content': music.newComment }
+                    axios.post(url, data).then(response => {
+                        music.comment_set.push(response.data)
+                        music.newComment = ''
+                    }).catch(error => console.log(error))
+                }
+            }
+        })
+        
+
+
+
+    </script>
+</body>
+</html>
